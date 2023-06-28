@@ -1,85 +1,23 @@
-<scroll-view scroll-x class="scroll_view">
-    <view class="tab">
-        <view class="tab_item {{ tabNow === index ? 'select' : '' }}" wx:for="{{ tabList }}" data-id="{{ index }}" wx:key="index" bindtap="selectTab">
-            {{ item }}
-        </view>
-    </view><scroll-view scroll-x class="scroll_view">
-    <view class="tab">
-        <view class="tab_item {{ tabNow === index ? 'select' : '' }}" wx:for="{{ tabList }}" data-id="{{ index }}" wx:key="index" bindtap="selectTab">
-            {{ item }}
-        </view>
-    </view>
-</scroll-view>
+<view class="body">
+    <image class="noneImg" src="../../images/none.png" wx:if="{{ hasapply}}"></image>
+  <view class="noneData" wx:if="{{ hasapply }}">
+    -- 暂无申请 --
+  </view>
 
-<view wx:if="{{ tabNow === 0}}" class="body">
-    <view class="tips">
-        向上拖动更新信息~
+  <view class="apply" wx:for="{{applylist}}" wx:key="index" >
+    <view class = "top">
+        <image class="avatar" src="{{item.userInfo.avatarUrl}}"></image>
+        <text>{{item.userInfo.nickName}}</text>
     </view>
-    <view class="order" wx:for="{{ 4 }}" wx:key="index">
-        <view class="order_top">
-            <view class="top_left">
-                <image src="../../images/info_select.png"></image> 
-                <view class="name">
-                    <text>租借服务</text>
-                    <text>2天前</text>
-                </view>
-            </view>
-            <view class="top_right">
-                待帮助
-            </view>
-        </view>
-        <view class="order_content">
-            <view class="content">
-                我是吴骏涵，谁来和我嘿嘿嘿。 约定时间：23：00 租借时长：30分钟归还
-            </view>
-            <view class="address">
-                目的地：其他区域-其他区域-其他区域
-            </view>
-        </view>
-        <view class="order_bottom">
-            <view class="money">
-            金额 ¥100
-            </view>
-            <view class="accept">
-            接单
-            </view>
-        </view>
+    <view class = "middle">
+        <text>姓名：{{item.name}}</text>
+        <text>证件号：{{item.userID}}</text>
+        <image src="{{item.userIDImg}}"></image>
     </view>
-</view>
-</scroll-view>
+    <view class= "buttom" >
+        <button class= "agree" data-index="{{index}}" bindtap="accept">同意</button>
+        <button class= "refuse" data-index="{{index}}" bindtap="refuse">拒绝</button>
+    </view>
+  </view>
 
-<view wx:if="{{ tabNow === 0}}" class="body">
-    <view class="tips">
-        向上拖动更新信息~
-    </view>
-    <view class="order" wx:for="{{ 4 }}" wx:key="index">
-        <view class="order_top">
-            <view class="top_left">
-                <image src="../../images/info_select.png"></image> 
-                <view class="name">
-                    <text>租借服务</text>
-                    <text>2天前</text>
-                </view>
-            </view>
-            <view class="top_right">
-                待帮助
-            </view>
-        </view>
-        <view class="order_content">
-            <view class="content">
-                我是吴骏涵，谁来和我嘿嘿嘿。 约定时间：23：00 租借时长：30分钟归还
-            </view>
-            <view class="address">
-                目的地：其他区域-其他区域-其他区域
-            </view>
-        </view>
-        <view class="order_bottom">
-            <view class="money">
-            金额 ¥100
-            </view>
-            <view class="accept">
-            接单
-            </view>
-        </view>
-    </view>
 </view>

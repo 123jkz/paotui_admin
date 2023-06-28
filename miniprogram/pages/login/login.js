@@ -46,7 +46,7 @@ Page({
                     })
                     return;
                 }
-                wx.redirectTo({
+                wx.switchTab({
                   url: '../admin/admin',
                 })
             }

@@ -1,8 +1,33 @@
 {
   "pages": [
     "pages/login/login",
-    "pages/admin/admin"
+    "pages/admin/admin",
+    "pages/order/order",
+    "pages/deliver/deliver"
   ],
+  "tabBar": {
+    "list": [
+    {
+        "pagePath": "pages/admin/admin",
+        "text": "骑手申请",
+        "iconPath": "./images/check.png",
+        "selectedIconPath": "./images/check_select.png"
+    },
+    {
+        "pagePath": "pages/order/order",
+        "text":"订单管理",
+        "iconPath": "./images/Order.png",
+        "selectedIconPath": "./images/Order_select.png"
+    },
+
+    {
+      "pagePath": "pages/deliver/deliver",
+      "text":"骑手管理",
+      "iconPath": "./images/deliver.png",
+      "selectedIconPath": "./images/deliver_select.png"
+  }
+  ]
+},
   "window": {
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
