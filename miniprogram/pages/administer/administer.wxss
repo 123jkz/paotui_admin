@@ -10,7 +10,7 @@
     height: 200rpx;
   }
 
-  .body .delivers {
+  .body .administer {
     width: 85%;
     padding: 35rpx 25rpx;
     background-color: #fff;
@@ -22,28 +22,21 @@
     border-radius: 20rpx;
   }
 
- .body .delivers .top{
+ .body .administer .top{
     display: flex;
     border-radius:10rpx ;
     align-items: center;
 }
 
-
- .body .delivers .top .avatar{
-    width: 130rpx;
-    height: 130rpx;
-    border-radius: 50%;
-    background-color: #fff;
-    border: 5rpx solid gray;
- }
- .body .delivers .middle text{
-    display: flex;
-    flex-direction: column;
-    padding: 5rpx;
-    margin-left: 50rpx;
- }
-  .body .delivers .buttom .refuse{
+.body .administer .buttom .refuse{
     width: 300rpx;
     background-color: rgba(255, 102,102, .2);
     color: rgb(255, 102, 102);
+}
+
+  .body .add {
+    margin-top: 100rpx;
+    width: 400rpx;
+    background-color: rgba(10, 149, 241, 0.2);
+    color: rgb(10, 149, 241);
 }

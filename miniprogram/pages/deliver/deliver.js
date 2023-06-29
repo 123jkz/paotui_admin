@@ -1,18 +1,61 @@
 // pages/deliver/deliver.js
+const db = wx.cloud.database()
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-
+        deliverlist:[],
+        hasdeliver:false
     },
 
+    refuse(e){
+        const {index}=e.currentTarget.dataset;
+        const {_id} =this.data.deliverlist[index];
+        const that=this;
+        wx.cloud.callFunction({
+            name:"refuse",
+            data:{
+                _id:_id
+            },
+            success(res){
+                that.onLoad();
+                wx.showToast({
+                  title: '已取消',
+                })
+            },
+        })
+    },
+
+    selectdeliver(e){
+        const {
+            index
+          } = e.currentTarget.dataset;
+          const deliver = this.data.deliverlist[index];
+          wx.setStorageSync('deliverNow', deliver);
+          wx.navigateTo({
+            url: '../deliverdetail/deliverdetail',
+          })
+    },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-
+        var that=this;
+        db.collection('mailmanapply').where({
+            state:"已通过"
+        }).get({
+            success(res){
+                that.setData({
+                    deliverlist:res.data,
+                    hasdeliver:!res.data.length,
+                })
+            },
+            fail(res){
+                console.log(res);
+            }
+        });
     },
 
     /**
@@ -26,7 +69,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow() {
-
+        this.onLoad();
     },
 
     /**

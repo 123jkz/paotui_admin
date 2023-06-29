@@ -1,0 +1,17 @@
+<view class="body">
+    <image class="noneImg" src="../../images/none.png" wx:if="{{ hasadminister}}"></image>
+  <view class="noneData" wx:if="{{ hasadminister }}">
+    -- 暂无管理员 --
+  </view>
+
+  <view class="administer" wx:for="{{administerlist}}" wx:key="index" wx:if="{{index!=0}}" data-index="{{ index }}">
+    <view class = "top">
+        <text>{{item.name}}-管理员{{index}}</text>
+    </view>
+    <view class= "buttom" wx:if="{{isadmin}}">
+        <button class= "refuse" data-index="{{index}}" catchtap="refuse">取消资格</button>
+    </view>
+  </view>
+  <button class = "add" bindtap="add">新增管理员</button>
+
+</view>

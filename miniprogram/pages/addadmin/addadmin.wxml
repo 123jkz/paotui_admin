@@ -1,0 +1,15 @@
+<view class="body">
+    <view class="item">
+        <text>用户名：</text>
+        <input type="text" placeholder="请填写用户名" value="{{ name }}" bindinput="getName" />
+    </view>
+    <view class="item">
+        <text>密码：</text>
+        <input password type="text" placeholder="请填写密码" value="{{ userID }}" bindinput="getUserpassword" />
+    </view>
+    <view class="item">
+        <text>确认密码：</text>
+        <input password type="text" placeholder="请再次填写密码" value="{{ userID }}" bindinput="getUserpasswordagain" />
+    </view>
+    <button class="submitadmin"  bindtap="submit">确认</button>
+</view>

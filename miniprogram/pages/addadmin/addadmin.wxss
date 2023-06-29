@@ -1,0 +1,38 @@
+
+.body {
+    background-color: #fff;
+    width: 90%;
+    margin: 70rpx auto;
+    border-radius: 20rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+  
+  .body .item {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    padding: 20rpx 0;
+    border-bottom: 1rpx solid #d1d1d1;
+    align-items: center;
+    margin-top: 40rpx;
+  }
+
+  .body .item input {
+    text-align: right;
+  }
+  
+  .body .uploadImg {
+    width: 90%;
+    padding: 20rpx 0;
+  }
+  
+  .body .submitadmin {
+    margin: 50rpx;
+    width: 400rpx;
+    background-color: rgba(10, 149, 241, 0.2);
+    color: rgb(10, 149, 241);
+}
+  

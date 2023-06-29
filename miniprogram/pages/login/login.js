@@ -46,6 +46,7 @@ Page({
                     })
                     return;
                 }
+                wx.setStorageSync('name', name);
                 wx.switchTab({
                   url: '../admin/admin',
                 })

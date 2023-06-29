@@ -1,4 +1,4 @@
-// pages/admin/admin.js
+// pages/administer/administer.js
 const db = wx.cloud.database()
 Page({
 
@@ -6,79 +6,69 @@ Page({
      * 页面的初始数据
      */
     data: {
-        applylist:[],
-        hasapply:false
+        isadmin:false,
+        hasadminister:false,
+        administerlist:[]
     },
-
-    accept(e){
-        const {index}=e.currentTarget.dataset;
-        const {_id} =this.data.applylist[index];
-        const that=this;
-        wx.cloud.callFunction({
-            name:"accept",
-            data:{
-                _id:_id
-            },
-            success(res){
-                that.onLoad();
-                wx.showToast({
-                  title: '已通过',
-                })
-            },
-        })
-    },
-
+    
     refuse(e){
-        const {index}=e.currentTarget.dataset;
-        const {_id} =this.data.applylist[index];
+        const index = e.currentTarget.dataset.index;
+        const {_id} =this.data.administerlist[index];
         const that=this;
         wx.cloud.callFunction({
-            name:"refuse",
+            name:"deleteadmin",
             data:{
                 _id:_id
             },
             success(res){
                 that.onLoad();
                 wx.showToast({
-                  title: '已拒绝',
+                  title: '已删除',
                 })
             },
         })
     },
 
+    add(){
+        wx.navigateTo({
+          url: '../addadmin/addadmin',
+        })
+    },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        var that=this;
-        db.collection('mailmanapply').where({
-            state:"审核中"
-        }).get({
+        const that=this;
+        const name=wx.getStorageSync('name');
+        if(name=='admin'){
+            that.setData({
+                isadmin:true
+            });
+        }
+        db.collection('admininfo').get({
             success(res){
                 that.setData({
-                    applylist:res.data,
-                    hasapply:!res.data.length,
-                })
+                    administerlist:res.data,
+                    hasadminister: !res.data.length,
+                });
             },
             fail(res){
                 console.log(res);
             }
         });
-        //setTimeout(()=>{that.onLoad();},3000);
     },
 
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady() {
-        //wx.hideLoading();
+
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
     onShow() {
-        wx.hideHomeButton();
         this.onLoad();
     },
 

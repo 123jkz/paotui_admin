@@ -7,9 +7,6 @@ const db =cloud.database();
 // 云函数入口函数
 exports.main = async (event, context) => {
     const {_id} = event;
-    db.collection('mailmanapply').doc(_id).update({
-        data:{
-            state:"审核中"
-        }
+    db.collection('admininfo').doc(_id).remove({
     })
 }
