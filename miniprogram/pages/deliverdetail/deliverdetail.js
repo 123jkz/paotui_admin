@@ -5,14 +5,32 @@ Page({
      * 页面的初始数据
      */
     data: {
-
+        userInfo:'',
+        name:'',
+        userIDImg:'',
+        userID:'',
+        gender:'',
+        count:0,
+        like:0,
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-
+        const deliver=wx.getStorageSync('deliverNow');
+        console.log(deliver);
+        const {userInfo,userIDImg,name,userID,gender,count,like}=wx.getStorageSync('deliverNow');
+        this.setData({
+            userInfo,
+            userIDImg,
+            name,
+            userID,
+            gender,
+            count,
+            like
+        })
+        
     },
 
     /**

@@ -1,2 +1,32 @@
-<!--pages/deliverdetail/deliverdetail.wxml-->
-<text>pages/deliverdetail/deliverdetail.wxml</text>
+<view class="body">
+    <view class="avatar">
+        <image src="{{ userInfo.avatarUrl }}"></image>
+    </view>
+
+    <view class="item">
+        <text>姓名：</text>
+        <text>{{name}}</text>
+    </view>
+    <view class="item">
+        <text>性别：</text>
+        <text>{{gender?'女':'男'}}</text>
+    </view>
+    <view class="item">
+        <text>学号：</text>
+        <text>{{userID}}</text>
+    </view>
+    <view class="item">
+        <text>总单数：</text>
+        <text>{{count}}</text>
+    </view>
+    <view class="item">
+        <text>好评数：</text>
+        <text>{{like}}</text>
+    </view>
+    <view class="uploadImg">
+        <text>相关证件证明：</text>
+        <view class="upload" >
+            <image src="{{ userIDImg }}"></image>
+        </view>
+    </view>
+</view>

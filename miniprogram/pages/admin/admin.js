@@ -14,6 +14,9 @@ Page({
         const {index}=e.currentTarget.dataset;
         const {_id} =this.data.applylist[index];
         const that=this;
+        wx.showLoading({
+            title:'处理中',
+        })
         wx.cloud.callFunction({
             name:"accept",
             data:{
@@ -21,6 +24,7 @@ Page({
             },
             success(res){
                 that.onLoad();
+                wx.hideLoading();
                 wx.showToast({
                   title: '已通过',
                 })
@@ -32,6 +36,9 @@ Page({
         const {index}=e.currentTarget.dataset;
         const {_id} =this.data.applylist[index];
         const that=this;
+        wx.showLoading({
+            title:'处理中',
+        })
         wx.cloud.callFunction({
             name:"refuse",
             data:{
@@ -39,6 +46,7 @@ Page({
             },
             success(res){
                 that.onLoad();
+                wx.hideLoading();
                 wx.showToast({
                   title: '已拒绝',
                 })

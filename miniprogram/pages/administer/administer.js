@@ -15,6 +15,9 @@ Page({
         const index = e.currentTarget.dataset.index;
         const {_id} =this.data.administerlist[index];
         const that=this;
+        wx.showLoading({
+            title:'处理中',
+        })
         wx.cloud.callFunction({
             name:"deleteadmin",
             data:{
@@ -22,6 +25,7 @@ Page({
             },
             success(res){
                 that.onLoad();
+                wx.hideLoading();
                 wx.showToast({
                   title: '已删除',
                 })

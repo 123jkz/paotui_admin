@@ -81,7 +81,6 @@ Page({
               })
               return;
         }
-        console.log('ok');
         db.collection('admininfo').add({
             data: {
                 name:that.name,

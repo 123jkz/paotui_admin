@@ -9,7 +9,7 @@ exports.main = async (event, context) => {
     const {_id} = event;
     db.collection('mailmanapply').doc(_id).update({
         data:{
-            state:"审核中"
+            state:"已拒绝"
         }
     })
 }
