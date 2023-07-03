@@ -15,22 +15,31 @@ Page({
         const index = e.currentTarget.dataset.index;
         const {_id} =this.data.administerlist[index];
         const that=this;
-        wx.showLoading({
-            title:'处理中',
-        })
-        wx.cloud.callFunction({
-            name:"deleteadmin",
-            data:{
-                _id:_id
-            },
-            success(res){
-                that.onLoad();
-                wx.hideLoading();
-                wx.showToast({
-                  title: '已删除',
+        wx.showModal({
+            title: '删除',
+            content: '确定要删除吗？',
+            complete: (res) => {
+            if (res.confirm) {
+                wx.showLoading({
+                    title:'处理中',
                 })
-            },
-        })
+                wx.cloud.callFunction({
+                    name:"deleteadmin",
+                    data:{
+                        _id:_id
+                    },
+                    success(res){
+                        that.onLoad();
+                        wx.hideLoading();
+                        wx.showToast({
+                          title: '已删除',
+                        })
+                    },
+                })    
+            }
+            }
+          })
+        
     },
 
     add(){

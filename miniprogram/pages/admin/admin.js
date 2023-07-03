@@ -36,22 +36,31 @@ Page({
         const {index}=e.currentTarget.dataset;
         const {_id} =this.data.applylist[index];
         const that=this;
-        wx.showLoading({
-            title:'处理中',
-        })
-        wx.cloud.callFunction({
-            name:"refuse",
-            data:{
-                _id:_id
-            },
-            success(res){
-                that.onLoad();
-                wx.hideLoading();
-                wx.showToast({
-                  title: '已拒绝',
+        wx.showModal({
+            title: '删除',
+            content: '确定要删除吗？',
+            complete: (res) => {
+            if (res.confirm) {
+                wx.showLoading({
+                    title:'处理中',
                 })
-            },
-        })
+                wx.cloud.callFunction({
+                    name:"refuse",
+                    data:{
+                        _id:_id
+                    },
+                    success(res){
+                        that.onLoad();
+                        wx.hideLoading();
+                        wx.showToast({
+                          title: '已拒绝',
+                        })
+                    },
+                })    
+            }
+            }
+          })
+        
     },
 
     /**
