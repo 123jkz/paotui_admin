@@ -67,20 +67,21 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        var that=this;
+        var that = this;
         db.collection('mailmanapply').where({
             state:"审核中"
-        }).get({
-            success(res){
-                that.setData({
-                    applylist:res.data,
-                    hasapply:!res.data.length,
-                })
+        }).watch({
+            onChange: function(snapshot) {
+            that.setData({
+                applylist:snapshot.docs,
+                hasapply:!snapshot.docs.length,
+            })       
             },
-            fail(res){
-                console.log(res);
+            onError: function(err){
+                console.log(err)
             }
-        });
+            })
+        
         //setTimeout(()=>{that.onLoad();},3000);
     },
 
